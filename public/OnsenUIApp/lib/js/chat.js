@@ -3,8 +3,7 @@ ons.forcePlatformStyling('ios');
 
 // WebSocketサーバの定義
 // var uri = "wss://ruby-websockets-chat.herokuapp.com/";
-// var uri = "ws://localhost:9292/";
-var uri = "ws://192.168.10.3:9292/";
+var uri = "ws://localhost:5000/";
 var ws = null;  // WebSocketオブジェクト
 
 var username;   // ユーザー名
@@ -12,8 +11,6 @@ var username;   // ユーザー名
 // ページが切り替わる度に呼ばれます。
 document.addEventListener('init', function(event) {
   var page = event.target;
-  console.log(page);
-  console.log(page.matches('#first-page'));
   if (page.matches('#first-page')) {  // 入室画面の処理
     // 入室ボタンを押した時の処理
     $('#push-button').on('click', function() {

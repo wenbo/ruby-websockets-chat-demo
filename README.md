@@ -1,4 +1,4 @@
-# Ruby WebSockets Chat Demo
+# OnsenUI App Demo
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
@@ -21,4 +21,14 @@ Using foreman we can boot the application.
 $ foreman start
 ```
 
+Run Redis with:
+
+```
+$ ./src/redis-server
+```
+
 You can now visit <http://localhost:5000> to see the application.
+
+## App List
+- Get started:  <http://localhost:5000/OnsenUIApp/index.html>
+- Chat:         <http://localhost:5000/OnsenUIApp/chat.html>
