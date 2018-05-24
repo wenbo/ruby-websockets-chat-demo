@@ -12,8 +12,8 @@ module ChatDemo
     def initialize(app)
       @app     = app
       @clients = []
-      uri = URI.parse("redis://localhost:6379")
-      @redis = Redis.new(host: uri.host, port: uri.port)
+      uri = URI.parse(ENV["REDISCLOUD_URL"])
+      @redis = Redis.new(host: uri.host, port: uri.port, password: uri.password)
       Thread.new do
         redis_sub = Redis.new(host: uri.host, port: uri.port, password: uri.password)
         redis_sub.subscribe(CHANNEL) do |on|
