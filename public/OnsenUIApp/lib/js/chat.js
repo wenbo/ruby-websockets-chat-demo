@@ -3,10 +3,21 @@ ons.forcePlatformStyling('ios');
 
 // WebSocketサーバの定義
 // var uri = "wss://ruby-websockets-chat.herokuapp.com/";
-var uri = "ws://localhost:5000/";
+var uri = "ws://192.168.10.3:5000/";
 var ws = null;  // WebSocketオブジェクト
 
 var username;   // ユーザー名
+
+function timestamp() {
+  var d = new Date();
+  var month = d.getMonth() + 1;
+  var day   = d.getDate();
+  var hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+  var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
+  var sec   = ( d.getSeconds() < 10 ) ? '0' + d.getSeconds() : d.getSeconds();
+  return (month + '/' + day + ' ' + hour + ':' + min + ':' + sec );
+}
+
 
 // ページが切り替わる度に呼ばれます。
 document.addEventListener('init', function(event) {
@@ -34,15 +45,19 @@ document.addEventListener('init', function(event) {
         $('#chats').append(`
               <ons-list-item modifier="nodivider">
                 <div class="right">
+                  <div>${timestamp()}</div>
                   <ons-button style="background-color: green">${data.text}</ons-button>
                 </div>
               </ons-list-item>`);
+        $(".content").scrollTop($(document).height());
       }else{
         $('#chats').append(`
               <ons-list-item modifier="nodivider">
+                <div>${timestamp()}</div>
                 <ons-button>${data.text}</ons-button>
                 <span class="list-item__subtitle">${data.handle}</span>
               </ons-list-item>`);
+        $(".content").scrollTop($(document).height());
       }
     };
     
@@ -67,3 +82,4 @@ ons.ready(function() {
     ws = null;
   });
 });
+
